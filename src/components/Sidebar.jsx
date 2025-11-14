@@ -8,7 +8,7 @@ const Sidebar = () => (
       <p>Studio digital spécialisé dans les sites métiers.</p>
     </div>
 
-    <nav className="sidebar__nav">
+    <nav className="sidebar__nav" aria-label="Navigation des secteurs">
       <p className="sidebar__nav-label">Exploration par secteur</p>
       <ul>
         {categories.map(({ slug, label, icon: Icon, accent }) => (

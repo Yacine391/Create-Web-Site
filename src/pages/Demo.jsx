@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { categories } from '../data/categories.js';
+import DemoSite from '../components/DemoSite.jsx';
 
 const Demo = () => {
   const { slug, demoId } = useParams();
@@ -22,11 +23,11 @@ const Demo = () => {
           <h1>{demo.title}</h1>
           <p>{demo.summary}</p>
           <div className="demo-hero__actions">
-            <a href={demo.demoUrl} target="_blank" rel="noreferrer" className="btn btn--primary">
-              Accéder à la démo
+            <a href="#demo-site" className="btn btn--primary">
+              Voir la démo immersive
             </a>
             <a href="mailto:hello@novacraft.studio" className="btn btn--ghost">
-              Demander une adaptation
+              Co-créer ce concept
             </a>
           </div>
         </div>
@@ -38,30 +39,7 @@ const Demo = () => {
         </div>
       </section>
 
-      <section className="section">
-        <div className="section__header">
-          <h2>Intentions créatives</h2>
-          <p>{demo.style}</p>
-        </div>
-        <div className="demo-details">
-          <div>
-            <h3>Expérience</h3>
-            <p>
-              Architecture modulaire, transitions fluides et animations micro-interactives. Nous
-              faisons respirer le contenu en alternant sections immersives et blocs fonctionnels.
-            </p>
-          </div>
-          <div>
-            <h3>Focus conversion</h3>
-            <ul>
-              <li>CTA sticky multi-devices</li>
-              <li>Sections preuves sociales</li>
-              <li>Formulaires dynamiques</li>
-              <li>Optimisation Core Web Vitals</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+      <DemoSite category={category} demo={demo} />
     </div>
   );
 };

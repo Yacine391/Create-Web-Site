@@ -36,15 +36,39 @@ const Home = () => (
       </div>
     </section>
 
-    <section className="section">
+    <section className="section" aria-labelledby="categories-heading">
       <div className="section__header">
-        <h2>Explorez nos univers métiers</h2>
+        <h2 id="categories-heading">Explorez nos univers métiers</h2>
         <p>Chaque secteur possède une approche UI dédiée, testée et optimisée pour convertir.</p>
       </div>
       <div className="category-grid">
         {categories.map((category) => (
           <CategoryCard key={category.slug} category={category} />
         ))}
+      </div>
+    </section>
+
+    <section id="contact" className="contact-panel" aria-labelledby="contact-heading">
+      <div className="contact-panel__content">
+        <p className="hero__eyebrow">Co-création</p>
+        <h2 id="contact-heading">Parlons de votre prochaine expérience digitale</h2>
+        <p>
+          Nous imaginons des interfaces accessibles, rapides et pensées pour tous les supports. Partagez
+          vos objectifs et nous concevons une démonstration sur mesure en quelques jours.
+        </p>
+        <div className="contact-panel__badges">
+          <span>Audit UX offert</span>
+          <span>Livraison 10 jours</span>
+          <span>100% responsive</span>
+        </div>
+      </div>
+      <div className="contact-panel__actions">
+        <a href="mailto:hello@novacraft.studio" className="btn btn--primary">
+          Discuter d&apos;un projet
+        </a>
+        <a href="tel:+33180000000" className="btn btn--ghost">
+          +33 1 80 00 00 00
+        </a>
       </div>
     </section>
   </div>
