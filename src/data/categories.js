@@ -94,7 +94,7 @@ export const categories = [
         title: 'Bistrot Urbain',
         style: 'Design clair, badges avis et carte illustrée.',
         summary: 'Pensé pour les tables de quartier qui vivent au rythme des services.',
-        image: `https://images.unsplash.com/photo-1529042410759-befb1204b468${demoParams}`,
+        image: `https://images.unsplash.com/photo-1481837005893-44b8304c31ab${demoParams}`,
         highlights: [
           'Carrousel express des plats iconiques',
           'Filtre express déjeuner / dîner',
@@ -285,7 +285,7 @@ export const categories = [
         title: 'Urban Gloss',
         style: 'Ton franc, filtres rapides et storytelling par service.',
         summary: 'Design punchy pour les salons urbains et communautaires.',
-        image: `https://images.unsplash.com/photo-1503933166340-4f27deedc1b4${demoParams}`,
+        image: `https://images.unsplash.com/photo-1610992015735-50b1d08aa8f5${demoParams}`,
         highlights: [
           'Filtres express coupe/couleur/soin',
           'Module tarifs dynamique',
