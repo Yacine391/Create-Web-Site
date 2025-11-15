@@ -145,6 +145,18 @@ export const categories = [
             address: '58 rue Oberkampf, 75011 Paris',
             hours: 'Lun - Dim · 11h30 - 00h30',
           },
+          gallery: [
+            {
+              src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80',
+              alt: 'Intérieur chaleureux avec comptoir en bois et banquettes',
+              caption: 'Une ambiance bistrot chic baignée de lumière naturelle.',
+            },
+            {
+              src: 'https://images.unsplash.com/photo-1528692948554-52c88036b2b2?auto=format&fit=crop&w=900&q=80',
+              alt: 'Assiette gourmande et verres de vin rouge sur table',
+              caption: 'Cuisine de marché revisitée au fil des saisons.',
+            },
+          ],
         },
       },
       {
@@ -336,6 +348,18 @@ export const categories = [
             address: '14 passage Desnouettes, 75015 Paris',
             hours: 'Lun - Sam · 09h - 22h',
           },
+          gallery: [
+            {
+              src: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80',
+              alt: 'Coiffeuse en train de travailler dans un salon moderne',
+              caption: 'Styling éditorial et coupes signature en plein cœur de Paris.',
+            },
+            {
+              src: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80',
+              alt: 'Produits capillaires et outils alignés sur un comptoir lumineux',
+              caption: 'Espace beauté lumineux pour prendre soin de vos cheveux.',
+            },
+          ],
         },
       },
       {

@@ -36,6 +36,7 @@ const DemoMiniSite = ({ category, demo }) => {
     contact: {},
   };
   const services = company.services ?? [];
+  const gallery = company.gallery ?? [];
   const highlights = company.highlights ?? [];
   const contact = company.contact ?? {};
   const layoutClass = theme.layout ? `mini-site--${theme.layout}` : 'mini-site--split';
@@ -118,6 +119,20 @@ const DemoMiniSite = ({ category, demo }) => {
           </ul>
         )}
       </section>
+
+      {gallery.length > 0 && (
+        <section className="mini-site__section mini-site__gallery">
+          <h2>En images</h2>
+          <div className="mini-site__gallery-grid">
+            {gallery.map((item, index) => (
+              <figure key={`${company.name}-gallery-${index}`}>
+                <img src={item.src} alt={item.alt ?? `${company.name} - visuel ${index + 1}`} loading="lazy" />
+                {item.caption && <figcaption>{item.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
 
       {services.length > 0 && (
         <section className="mini-site__section mini-site__services">
