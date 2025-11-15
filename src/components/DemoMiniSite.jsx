@@ -1,57 +1,30 @@
-const themeLibrary = {
-  restauration: {
-    nav: ['Carte', 'Expérience', 'Réserver'],
-    heroEyebrow: 'Cuisine signature',
-    buttons: ['Découvrir la carte', 'Réserver une table'],
-    cta: 'Parler au maître d’hôtel',
-    accent: 'linear-gradient(135deg, rgba(255, 140, 91, 0.25), rgba(23, 15, 27, 0.8))',
-  },
-  coiffure: {
-    nav: ['Looks', 'Expertises', 'Prendre RDV'],
-    heroEyebrow: 'Studio capillaire',
-    buttons: ['Voir le lookbook', 'Réserver'],
-    cta: 'Parler à un expert',
-    accent: 'linear-gradient(135deg, rgba(233, 111, 208, 0.3), rgba(10, 8, 14, 0.85))',
-  },
-  immobilier: {
-    nav: ['Programmes', 'Investir', 'Contact'],
-    heroEyebrow: 'Vitrines premium',
-    buttons: ['Explorer les biens', 'Planifier une visite'],
-    cta: 'Fixer une visite',
-    accent: 'linear-gradient(135deg, rgba(92, 122, 234, 0.25), rgba(12, 18, 34, 0.8))',
-  },
-  evenementiel: {
-    nav: ['Shows', 'Services', 'Brief'],
-    heroEyebrow: 'Expériences live',
-    buttons: ['Construire un show', 'Demander un devis'],
-    cta: 'Envoyer un brief',
-    accent: 'linear-gradient(135deg, rgba(255, 179, 71, 0.35), rgba(10, 5, 12, 0.85))',
-  },
-  photographie: {
-    nav: ['Portfolio', 'Services', 'Booking'],
-    heroEyebrow: 'Studio créatif',
-    buttons: ['Voir le portfolio', 'Booker un shooting'],
-    cta: 'Planifier une séance',
-    accent: 'linear-gradient(135deg, rgba(157, 123, 255, 0.3), rgba(10, 6, 18, 0.85))',
-  },
-  artisans: {
-    nav: ['Savoir-faire', 'Projets', 'Devis'],
-    heroEyebrow: 'Expertise locale',
-    buttons: ['Voir nos services', 'Demander un devis'],
-    cta: 'Être rappelé',
-    accent: 'linear-gradient(135deg, rgba(244, 184, 96, 0.35), rgba(22, 16, 10, 0.9))',
-  },
-  default: {
-    nav: ['Accueil', 'Services', 'Contact'],
-    heroEyebrow: 'Expérience digitale',
-    buttons: ['Découvrir', 'Parler à un expert'],
-    cta: 'Être rappelé',
-    accent: 'linear-gradient(135deg, rgba(124, 93, 255, 0.25), rgba(6, 8, 18, 0.9))',
-  },
+import { miniSiteThemes } from '../miniSites/themes.js';
+
+const navLibrary = {
+  restauration: ['Carte', 'Expérience', 'Réserver'],
+  coiffure: ['Looks', 'Expertises', 'Prendre RDV'],
+  immobilier: ['Programmes', 'Investir', 'Contact'],
+  evenementiel: ['Shows', 'Services', 'Brief'],
+  photographie: ['Portfolio', 'Services', 'Booking'],
+  artisans: ['Savoir-faire', 'Projets', 'Devis'],
+  default: ['Accueil', 'Services', 'Contact'],
+};
+
+const ctaLibrary = {
+  restauration: { primary: 'Découvrir la carte', secondary: 'Réserver une table' },
+  coiffure: { primary: 'Voir le lookbook', secondary: 'Réserver' },
+  immobilier: { primary: 'Explorer les biens', secondary: 'Planifier une visite' },
+  evenementiel: { primary: 'Construire un show', secondary: 'Demander un devis' },
+  photographie: { primary: 'Voir le portfolio', secondary: 'Booker un shooting' },
+  artisans: { primary: 'Voir nos services', secondary: 'Demander un devis' },
+  default: { primary: 'Découvrir', secondary: 'Parler à un expert' },
 };
 
 const DemoMiniSite = ({ category, demo }) => {
-  const preset = themeLibrary[category.slug] ?? themeLibrary.default;
+  const themeKey = `${category.slug}-${demo.id}`;
+  const theme = miniSiteThemes[themeKey] ?? miniSiteThemes.default;
+  const navItems = navLibrary[category.slug] ?? navLibrary.default;
+  const actions = ctaLibrary[category.slug] ?? ctaLibrary.default;
   const company = demo.company ?? {
     name: demo.title,
     tagline: demo.summary,
@@ -61,17 +34,43 @@ const DemoMiniSite = ({ category, demo }) => {
     services: [],
     contact: {},
   };
-  const navItems = preset.nav ?? ['Accueil', 'Services', 'Contact'];
   const services = company.services ?? [];
   const highlights = company.highlights ?? [];
   const contact = company.contact ?? {};
+  const layoutClass = theme.layout ? `mini-site--${theme.layout}` : 'mini-site--split';
+
+  const siteStyle = {
+    '--site-bg': theme.colors.background,
+    '--site-pattern': theme.pattern ?? 'none',
+    '--site-surface': theme.colors.surface,
+    '--site-card': theme.colors.card,
+    '--site-border': theme.colors.border,
+    '--site-text': theme.colors.text,
+    '--site-muted': theme.colors.muted,
+    '--site-accent': theme.colors.accent,
+    '--site-btn-primary': theme.colors.buttonPrimary,
+    '--site-btn-text': theme.colors.buttonText,
+    '--site-font-heading': theme.fonts.heading,
+    '--site-font-body': theme.fonts.body,
+  };
+
+  if (theme.heroImageRadius) {
+    siteStyle['--site-hero-radius'] = theme.heroImageRadius;
+  }
+
+  const contactDetails = [
+    contact.phone && { label: 'Téléphone', value: contact.phone },
+    contact.email && { label: 'Email', value: contact.email },
+    contact.address && { label: 'Adresse', value: contact.address },
+    contact.hours && { label: 'Horaires', value: contact.hours },
+  ].filter(Boolean);
 
   return (
-    <section className="mini-site">
-      <header className="mini-site__header" style={{ background: preset.accent }}>
+    <section className={`mini-site ${layoutClass}`} style={siteStyle}>
+      <header className="mini-site__header">
         <div className="mini-site__brand">
           <span>{company.name}</span>
-          <small>{company.tagline}</small>
+          <small>{company.tagline ?? category.description}</small>
         </div>
         <nav aria-label={`Menu ${company.name}`}>
           {navItems.map((item) => (
@@ -81,21 +80,21 @@ const DemoMiniSite = ({ category, demo }) => {
           ))}
         </nav>
         <button type="button" className="btn btn--ghost mini-site__cta">
-          {preset.cta}
+          {actions.secondary}
         </button>
       </header>
 
       <div className="mini-site__hero">
         <div className="mini-site__hero-copy">
-          <p className="mini-site__eyebrow">{preset.heroEyebrow}</p>
+          <p className="mini-site__eyebrow">{company.tagline ?? category.label}</p>
           <h1>{company.hero?.title ?? demo.title}</h1>
           <p>{company.hero?.subtitle ?? demo.summary}</p>
           <div className="mini-site__actions">
             <button type="button" className="btn btn--primary">
-              {preset.buttons[0]}
+              {actions.primary}
             </button>
             <button type="button" className="btn btn--ghost">
-              {preset.buttons[1]}
+              {actions.secondary}
             </button>
           </div>
         </div>
@@ -138,30 +137,12 @@ const DemoMiniSite = ({ category, demo }) => {
         <div>
           <h2>Contact</h2>
           <ul>
-            {contact.phone && (
-              <li>
-                <strong>Téléphone</strong>
-                <span>{contact.phone}</span>
+            {contactDetails.map((detail) => (
+              <li key={detail.label}>
+                <strong>{detail.label}</strong>
+                <span>{detail.value}</span>
               </li>
-            )}
-            {contact.email && (
-              <li>
-                <strong>Email</strong>
-                <span>{contact.email}</span>
-              </li>
-            )}
-            {contact.address && (
-              <li>
-                <strong>Adresse</strong>
-                <span>{contact.address}</span>
-              </li>
-            )}
-            {contact.hours && (
-              <li>
-                <strong>Horaires</strong>
-                <span>{contact.hours}</span>
-              </li>
-            )}
+            ))}
           </ul>
         </div>
         <form className="mini-site__form">

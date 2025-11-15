@@ -12,7 +12,7 @@ const Demo = () => {
   }
 
   return (
-    <div className="page fade-in">
+    <div className="page fade-in demo-page">
       <div className="demo-breadcrumb">
         <Link to={`/categorie/${slug}`}>← Retour {category.label}</Link>
       </div>
