@@ -4,7 +4,7 @@ const DemoCard = ({ categorySlug, demo, accent }) => {
   const { immersion } = demo;
 
   return (
-    <article className="immersive-card" style={{ '--accent-color': accent }}>
+    <article className="immersive-card" style={{ '--accent-color': accent }} data-demo-id={demo.id}>
       <div className="immersive-card__preview" aria-hidden="true">
         <div className="immersive-card__viewport">
           <img src={demo.image} alt="" loading="lazy" />
