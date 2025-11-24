@@ -3,6 +3,7 @@ import AppLayout from './layouts/AppLayout.jsx';
 import Home from './pages/Home.jsx';
 import Category from './pages/Category.jsx';
 import Demo from './pages/Demo.jsx';
+import YellLabDemo from './pages/YellLabDemo.jsx';
 
 const router = createBrowserRouter(
   [
@@ -13,9 +14,13 @@ const router = createBrowserRouter(
         { index: true, element: <Home /> },
         { path: 'categorie/:slug', element: <Category /> },
         { path: 'demo/:slug/:demoId', element: <Demo /> },
-        { path: '*', element: <Navigate to="/" replace /> },
       ],
     },
+    {
+      path: '/yell-lab',
+      element: <YellLabDemo />,
+    },
+    { path: '*', element: <Navigate to="/" replace /> },
   ],
   {
     future: {
@@ -26,4 +31,3 @@ const router = createBrowserRouter(
 );
 
 export default router;
-

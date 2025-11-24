@@ -16,6 +16,9 @@ const Home = () => (
           marquer les esprits. Choisissez votre univers et plongez dans nos concepts.
         </p>
         <div className="hero__actions">
+          <Link to="/yell-lab" className="btn btn--primary" style={{ background: '#000', color: '#fff', border: '1px solid #fff' }}>
+            Voir Démo "Yell Lab" ✨
+          </Link>
           <Link to="/categorie/artisans" className="btn btn--primary">
             Voir une démo Artisans
           </Link>
