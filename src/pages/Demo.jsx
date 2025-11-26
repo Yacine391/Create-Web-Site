@@ -12,14 +12,13 @@ const Demo = () => {
   }
 
   return (
-    <div className="page fade-in demo-page">
-      <div className="demo-breadcrumb">
-        <Link to={`/categorie/${slug}`}>← Retour {category.label}</Link>
-      </div>
+    <div className="demo-standalone fade-in">
+      <Link to={`/categorie/${slug}`} className="demo-exit-btn">
+        ← Retour Portfolio
+      </Link>
       <DemoMiniSite category={category} demo={demo} />
     </div>
   );
 };
 
 export default Demo;
-

@@ -13,9 +13,9 @@ const router = createBrowserRouter(
       children: [
         { index: true, element: <Home /> },
         { path: 'categorie/:slug', element: <Category /> },
-        { path: 'demo/:slug/:demoId', element: <Demo /> },
       ],
     },
+    { path: 'demo/:slug/:demoId', element: <Demo /> },
     {
       path: '/yell-lab',
       element: <YellLabDemo />,

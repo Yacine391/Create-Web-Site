@@ -1009,3 +1009,49 @@ a:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+
+/* Standalone Demo Pages */
+.demo-standalone {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background: var(--bg); /* Fallback */
+}
+
+.demo-standalone .mini-site {
+  min-height: 100vh;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  /* Keep internal padding or adjust if needed for full-width look */
+  /* padding: 0; If we want it to go edge to edge. DemoMiniSite has padding inside. */
+  /* But mini-site has 'flex-direction: column', etc. */
+  /* Let's reset padding to 0 and let inner sections handle their padding if possible, 
+     BUT DemoMiniSite structure puts padding on the container. 
+     Let's check DemoMiniSite structure again. */
+}
+
+.demo-exit-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: #000;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-exit-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.4);
+}
