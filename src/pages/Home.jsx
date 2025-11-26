@@ -66,7 +66,7 @@ const Home = () => (
         </div>
       </div>
       <div className="contact-panel__actions">
-        <a href="mailto:hello@novacraft.studio" className="btn btn--primary">
+        <a href="mailto:yacinehenine04@gmail.com" className="btn btn--primary">
           Discuter d'un projet
         </a>
         <a href="tel:+33180000000" className="btn btn--ghost">
